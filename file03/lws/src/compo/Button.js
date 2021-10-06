@@ -15,7 +15,7 @@ class Button extends React.Component {
         const { change, locale } = this.props;
         return (
             <button type="button" onClick={() => change(locale)}>
-                Click here
+                {locale === 'bn-BD' ? 'Change Clock' : 'gori poriborton korun'}
             </button>
         );
     }
