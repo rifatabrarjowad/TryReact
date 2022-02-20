@@ -3,12 +3,37 @@ export default class Form extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: null,
-      password: null,
+      username: "",
+      password: "",
+      usernameError: "",
+      passwordError: "",
     };
   }
+  valid() {
+    if (this.state.username.length < 5) {
+      this.setState({
+        usernameError: "Username must be at least 5 characters",
+      });
+    } else if (this.state.password.length < 5) {
+      this.setState({
+        passwordError: "Password must be at least 5 characters",
+      });
+    } else {
+      return true;
+    }
+  }
   submit() {
-    console.warn(this.state);
+    this.setState({
+      usernameError: "",
+      passwordError: "",
+    });
+    if (this.valid()) {
+      alert("Submit Successful");
+      this.setState({
+        username: "",
+        password: "",
+      });
+    }
   }
   render() {
     return (
@@ -31,6 +56,9 @@ export default class Form extends React.Component {
                 placeholder=" Enter Your Username"
                 onChange={(e) => this.setState({ username: e.target.value })}
               />
+              <p class="text-red-500 text-xs italic">
+                {this.state.usernameError}
+              </p>
             </div>
             <div className="mb-6">
               <label
@@ -47,6 +75,9 @@ export default class Form extends React.Component {
                 placeholder="Enter Your Password"
                 onChange={(e) => this.setState({ password: e.target.value })}
               />
+              <p class="text-red-500 text-xs italic">
+                {this.state.passwordError}
+              </p>
             </div>
             <div className="flex items-center justify-between">
               <button
