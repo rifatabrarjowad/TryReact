@@ -1,0 +1,10 @@
+{
+    "css.validate": false,
+    "tailwindCSS.emmetCompletions": true,
+    "cSpell.words": [
+        "eliment",
+        "eliments",
+        "semibold",
+        "tailwindcss"
+    ],
+}
